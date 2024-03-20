@@ -17,28 +17,22 @@ public class PracticeFormWithPOForJenkinsTest extends TestBase {
     @DisplayName("Тест для Practice Form с заполнением всех полей")
     void positiveRegistrationTest() {
 
-        step("Открыть страницу Practice Form", () -> {
-            registrationPage.openPage()
-                    .closeBanner();
-        });
+        step("Открыть страницу Practice Form", () -> registrationPage.openPage()
+                .closeBanner());
 
-        step("Ввести данные в поля Student Registration Form", () -> {
-            registrationPage.setFirstName("Renat")
-                    .setLastName("Taner")
-                    .setUserEmail("renat@taner.com")
-                    .setUserGender("Other")
-                    .setUserNumber("9876543210")
-                    .setUserDateOfBirth("28", "April", "1900")
-                    .setUserSubjects("Commerce")
-                    .setUserHobbies("Reading")
-                    .upLoadUserPicture("1.JPG")
-                    .setUserAdress("Baikonur Cosmodrome")
-                    .setUserState("Uttar Pradesh")
-                    .setUserCity("Lucknow");
-        });
-        step("Отправить данные для проверки нажав Submit", () -> {
-            registrationPage.clickSubmit();
-        });
+        step("Ввести данные в поля Student Registration Form", () -> registrationPage.setFirstName("Renat")
+                .setLastName("Taner")
+                .setUserEmail("renat@taner.com")
+                .setUserGender("Other")
+                .setUserNumber("9876543210")
+                .setUserDateOfBirth("28", "April", "1900")
+                .setUserSubjects("Commerce")
+                .setUserHobbies("Reading")
+                .upLoadUserPicture("1.JPG")
+                .setUserAdress("Baikonur Cosmodrome")
+                .setUserState("Uttar Pradesh")
+                .setUserCity("Lucknow"));
+        step("Отправить данные для проверки нажав Submit", () -> registrationPage.clickSubmit());
         step("Проверить данные на соответствие в форме Thanks for submitting the form", () -> {
             registrationPage.checkResult("Student Name", "Renat Taner")
                     .checkResult("Student Email", "renat@taner.com")
@@ -58,29 +52,21 @@ public class PracticeFormWithPOForJenkinsTest extends TestBase {
     @DisplayName("Негативный тест для Practice Form с заполнением не всех полей")
     void negativeRegistrationTest() {
 
-        step("Открыть страницу Practice Form", () -> {
-            registrationPage.openPage()
-                    .closeBanner();
-        });
-        step("Ввести данные в поля Student Registration Form кроме поля First Name", () -> {
-            registrationPage.setLastName("Taner")
-                    .setUserEmail("renat@taner.com")
-                    .setUserGender("Other")
-                    .setUserNumber("9876543210")
-                    .setUserDateOfBirth("28", "April", "1900")
-                    .setUserSubjects("Commerce")
-                    .setUserHobbies("Reading")
-                    .upLoadUserPicture("1.JPG")
-                    .setUserAdress("Baikonur Cosmodrome")
-                    .setUserState("Uttar Pradesh")
-                    .setUserCity("Lucknow");
-        });
-        step("Отправить данные для проверки нажав Submit", () -> {
-            registrationPage.clickSubmit();
-        });
-        step("Проверить отсутствие формы Thanks for submitting the form", () -> {
-            registrationPage.checkResultNegative();
-        });
+        step("Открыть страницу Practice Form", () -> registrationPage.openPage()
+                .closeBanner());
+        step("Ввести данные в поля Student Registration Form кроме поля First Name", () -> registrationPage.setLastName("Taner")
+                .setUserEmail("renat@taner.com")
+                .setUserGender("Other")
+                .setUserNumber("9876543210")
+                .setUserDateOfBirth("28", "April", "1900")
+                .setUserSubjects("Commerce")
+                .setUserHobbies("Reading")
+                .upLoadUserPicture("1.JPG")
+                .setUserAdress("Baikonur Cosmodrome")
+                .setUserState("Uttar Pradesh")
+                .setUserCity("Lucknow"));
+        step("Отправить данные для проверки нажав Submit", () -> registrationPage.clickSubmit());
+        step("Проверить отсутствие формы Thanks for submitting the form", () -> registrationPage.checkResultNegative());
     }
 
     @Tag("dz13")
@@ -88,10 +74,8 @@ public class PracticeFormWithPOForJenkinsTest extends TestBase {
     @DisplayName("Тест для Practice Form с заполнением обязательных полей")
     void requiredFieldsRegistrationTest() {
 
-        step("Открыть страницу Practice Form", () -> {
-            registrationPage.openPage()
-                    .closeBanner();
-        });
+        step("Открыть страницу Practice Form", () -> registrationPage.openPage()
+                .closeBanner());
         step("Ввести данные в поля Student Registration Form", () -> {
             registrationPage.setFirstName("Renat")
                     .setLastName("Taner")
@@ -99,9 +83,7 @@ public class PracticeFormWithPOForJenkinsTest extends TestBase {
                     .setUserNumber("9876543210")
                     .setUserDateOfBirth("28", "April", "1900");
         });
-        step("Отправить данные для проверки нажав Submit", () -> {
-            registrationPage.clickSubmit();
-        });
+        step("Отправить данные для проверки нажав Submit", () -> registrationPage.clickSubmit());
         step("Проверить данные на соответствие", () -> {
             registrationPage.checkResult("Student Name", "Renat Taner")
                     .checkResult("Gender", "Other")

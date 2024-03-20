@@ -23,8 +23,7 @@ public class RegistrationPage {
             userStateInput = $("#state"),
             userCityInput = $("#city"),
             clickButtonSubmit = $("#submit"),
-            checkError = $("#app"),
-            checkOneResult = $(".table-responsive");
+            checkError = $("#app");
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
@@ -32,10 +31,9 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage closeBanner() {
+    public void closeBanner() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
-        return this;
     }
 
     public RegistrationPage setFirstName(String value) {
@@ -94,20 +92,17 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setUserCity(String value) {
+    public void setUserCity(String value) {
         userCityInput.click();
         userCityInput.$(byText(value)).click();
-        return this;
     }
 
-    public RegistrationPage clickSubmit() {
+    public void clickSubmit() {
         clickButtonSubmit.click();
-        return this;
     }
 
-    public RegistrationPage checkResultNegative() {
+    public void checkResultNegative() {
         checkError.shouldNotHave((text("Thanks for submitting the form")));
-        return this;
     }
 
     public RegistrationPage checkResult(String key, String value) {
