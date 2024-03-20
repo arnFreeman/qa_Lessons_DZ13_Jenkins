@@ -1,5 +1,6 @@
 package tests;
 
+
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attach;
@@ -7,8 +8,10 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.RegistrationPage;
+
 import java.util.Map;
-import static io.qameta.allure.Allure.step;
+
+import static com.codeborne.selenide.logevents.SelenideLogger.step;
 
 public class PracticeFormWithPOForJenkinsTest {
     final RegistrationPage registrationPage = new RegistrationPage();
