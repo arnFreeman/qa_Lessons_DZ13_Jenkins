@@ -1,51 +1,27 @@
 package tests;
 
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import helpers.Attach;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.*;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
-
-import java.util.Map;
 
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
 
-public class PracticeFormWithPOForJenkinsTest {
-    final RegistrationPage registrationPage = new RegistrationPage();
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
-        Configuration.browserCapabilities = capabilities;
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-    }
+public class PracticeFormWithPOForJenkinsTest extends TestBase {
+    RegistrationPage registrationPage = new RegistrationPage();
 
-    @AfterEach
-    void addAttachments() {
-        Attach.screenshotAs("Последний скриншот");
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        Attach.addVideo();
-    }
 
     @Tag("dz13")
     @Test
     @DisplayName("Тест для Practice Form с заполнением всех полей")
     void positiveRegistrationTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+
         step("Открыть страницу Practice Form", () -> {
-            registrationPage.openPage();
+            registrationPage.openPage()
+                    .closeBanner();
         });
+
         step("Ввести данные в поля Student Registration Form", () -> {
             registrationPage.setFirstName("Renat")
                     .setLastName("Taner")
@@ -63,19 +39,28 @@ public class PracticeFormWithPOForJenkinsTest {
         step("Отправить данные для проверки нажав Submit", () -> {
             registrationPage.clickSubmit();
         });
-        step("Проверить данные на соответствие в форме Thanks for submitting the form", () ->
-                registrationPage.checkResultComponent("Renat Taner", "renat@taner.com", "Other",
-                        "9876543210", "28 April,1900", "Commerce", "Reading",
-                        "1.JPG", "Baikonur Cosmodrome", "Uttar Pradesh Lucknow"));
+        step("Проверить данные на соответствие в форме Thanks for submitting the form", () -> {
+            registrationPage.checkResult("Student Name", "Renat Taner")
+                    .checkResult("Student Email", "renat@taner.com")
+                    .checkResult("Gender", "Other")
+                    .checkResult("Mobile", "9876543210")
+                    .checkResult("Date of Birth", "28 April,1900")
+                    .checkResult("Subjects", "Commerce")
+                    .checkResult("Hobbies", "Reading")
+                    .checkResult("Picture", "1.JPG")
+                    .checkResult("Address", "Baikonur Cosmodrome")
+                    .checkResult("State and City", "Uttar Pradesh Lucknow");
+        });
     }
 
     @Tag("dz13")
     @Test
     @DisplayName("Негативный тест для Practice Form с заполнением не всех полей")
     void negativeRegistrationTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+
         step("Открыть страницу Practice Form", () -> {
-            registrationPage.openPage();
+            registrationPage.openPage()
+                    .closeBanner();
         });
         step("Ввести данные в поля Student Registration Form кроме поля First Name", () -> {
             registrationPage.setLastName("Taner")
@@ -102,9 +87,10 @@ public class PracticeFormWithPOForJenkinsTest {
     @Test
     @DisplayName("Тест для Practice Form с заполнением обязательных полей")
     void requiredFieldsRegistrationTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+
         step("Открыть страницу Practice Form", () -> {
-            registrationPage.openPage();
+            registrationPage.openPage()
+                    .closeBanner();
         });
         step("Ввести данные в поля Student Registration Form", () -> {
             registrationPage.setFirstName("Renat")
@@ -117,10 +103,10 @@ public class PracticeFormWithPOForJenkinsTest {
             registrationPage.clickSubmit();
         });
         step("Проверить данные на соответствие", () -> {
-            registrationPage.checkOneResult("Student Name", "Renat Taner")
-                    .checkOneResult("Gender", "Other")
-                    .checkOneResult("Mobile", "9876543210")
-                    .checkOneResult("Date of Birth", "28 April,1900");
+            registrationPage.checkResult("Student Name", "Renat Taner")
+                    .checkResult("Gender", "Other")
+                    .checkResult("Mobile", "9876543210")
+                    .checkResult("Date of Birth", "28 April,1900");
         });
     }
 }
