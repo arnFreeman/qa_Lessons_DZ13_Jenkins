@@ -7,9 +7,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.RegistrationPage;
-
 import java.util.Map;
-
 import static io.qameta.allure.Allure.step;
 
 public class PracticeFormWithPOForJenkinsTest {
