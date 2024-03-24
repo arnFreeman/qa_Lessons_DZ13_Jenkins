@@ -13,7 +13,7 @@ public class PracticeFormWithPOForJenkinsTest extends TestBase {
 
     @Test
     @DisplayName("Тест для Practice Form с заполнением всех полей")
-    @Tags({@Tag("dz13"), @Tag("Positive_Registration")})
+    @Tags({@Tag("Practice_Form"), @Tag("Positive_Registration")})
     void positiveRegistrationTest() {
         step("Открыть страницу Practice Form", () -> registrationPage.openPage()
                 .closeBanner());
@@ -46,7 +46,7 @@ public class PracticeFormWithPOForJenkinsTest extends TestBase {
 
     @Test
     @DisplayName("Негативный тест для Practice Form с заполнением не всех полей")
-    @Tags({@Tag("dz13"), @Tag("Negative_Registration")})
+    @Tags({@Tag("Practice_Form"), @Tag("Negative_Registration")})
     void negativeRegistrationTest() {
         step("Открыть страницу Practice Form", () -> registrationPage.openPage()
                 .closeBanner());
@@ -66,7 +66,7 @@ public class PracticeFormWithPOForJenkinsTest extends TestBase {
     }
     @Test
     @DisplayName("Тест для Practice Form с заполнением обязательных полей")
-    @Tags({@Tag("dz13"), @Tag("Required_Fields_Registration")})
+    @Tags({@Tag("Practice_Form"), @Tag("Required_Fields_Registration")})
     void requiredFieldsRegistrationTest() {
         step("Открыть страницу Practice Form", () -> registrationPage.openPage()
                 .closeBanner());

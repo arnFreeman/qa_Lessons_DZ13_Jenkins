@@ -46,9 +46,9 @@ tasks.withType(Test) {
         }
     }
 }
-task dz13_test(type: Test) {
+task Practice_Form_test(type: Test) {
     useJUnitPlatform {
-        includeTags("dz13")
+        includeTags("Practice_Form")
     }
 }
 task Positive_Registration_test(type: Test) {
