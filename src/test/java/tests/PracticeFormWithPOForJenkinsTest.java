@@ -64,6 +64,7 @@ public class PracticeFormWithPOForJenkinsTest extends TestBase {
         step("Отправить данные для проверки нажав Submit", () -> registrationPage.clickSubmit());
         step("Проверить отсутствие формы Thanks for submitting the form", () -> registrationPage.checkResultNegative());
     }
+
     @Test
     @DisplayName("Тест для Practice Form с заполнением обязательных полей")
     @Tags({@Tag("practiceForm"), @Tag("requiredFieldsRegistration")})
