@@ -35,7 +35,6 @@ dependencies {
             "io.qameta.allure:allure-selenide:2.25.0")
 }
 tasks.withType(Test) {
-
     useJUnitPlatform()
     systemProperties(System.getProperties())
 
@@ -46,23 +45,23 @@ tasks.withType(Test) {
         }
     }
 }
-task Practice_Form_test(type: Test) {
+task practiceForm_test(type: Test) {
     useJUnitPlatform {
-        includeTags("Practice_Form")
+        includeTags("practiceForm")
     }
 }
-task Positive_Registration_test(type: Test) {
+task positiveRegistration_test(type: Test) {
     useJUnitPlatform {
-        includeTags("Positive_Registration")
+        includeTags("positiveRegistration")
     }
 }
-task Negative_Registration_test(type: Test) {
+task negativeRegistration_test(type: Test) {
     useJUnitPlatform {
-        includeTags("Negative_Registration")
+        includeTags("negativeRegistration")
     }
 }
-task Required_Fields_Registration_test(type: Test) {
+task requiredFieldsRegistration_test(type: Test) {
     useJUnitPlatform {
-        includeTags("Required_Fields_Registration")
+        includeTags("requiredFieldsRegistration")
     }
 }
