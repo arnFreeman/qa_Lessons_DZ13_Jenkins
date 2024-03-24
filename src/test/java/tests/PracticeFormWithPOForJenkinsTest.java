@@ -2,15 +2,18 @@ package tests;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
 
 public class PracticeFormWithPOForJenkinsTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
-    @Tag("dz13")
+
     @Test
     @DisplayName("Тест для Practice Form с заполнением всех полей")
+    @Tags({@Tag("dz13"), @Tag("Positive_Registration")})
     void positiveRegistrationTest() {
         step("Открыть страницу Practice Form", () -> registrationPage.openPage()
                 .closeBanner());
@@ -40,9 +43,10 @@ public class PracticeFormWithPOForJenkinsTest extends TestBase {
                     .checkResult("State and City", "Uttar Pradesh Lucknow");
         });
     }
-    @Tag("dz13")
+
     @Test
     @DisplayName("Негативный тест для Practice Form с заполнением не всех полей")
+    @Tags({@Tag("dz13"), @Tag("Negative_Registration")})
     void negativeRegistrationTest() {
         step("Открыть страницу Practice Form", () -> registrationPage.openPage()
                 .closeBanner());
@@ -60,9 +64,9 @@ public class PracticeFormWithPOForJenkinsTest extends TestBase {
         step("Отправить данные для проверки нажав Submit", () -> registrationPage.clickSubmit());
         step("Проверить отсутствие формы Thanks for submitting the form", () -> registrationPage.checkResultNegative());
     }
-    @Tag("dz13")
     @Test
     @DisplayName("Тест для Practice Form с заполнением обязательных полей")
+    @Tags({@Tag("dz13"), @Tag("Required_Fields_Registration")})
     void requiredFieldsRegistrationTest() {
         step("Открыть страницу Practice Form", () -> registrationPage.openPage()
                 .closeBanner());

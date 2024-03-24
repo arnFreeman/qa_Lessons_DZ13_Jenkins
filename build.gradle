@@ -35,7 +35,9 @@ dependencies {
             "io.qameta.allure:allure-selenide:2.25.0")
 }
 tasks.withType(Test) {
+
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 
     testLogging {
         lifecycle {
@@ -47,5 +49,20 @@ tasks.withType(Test) {
 task dz13_test(type: Test) {
     useJUnitPlatform {
         includeTags("dz13")
+    }
+}
+task Positive_Registration_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("Positive_Registration")
+    }
+}
+task Negative_Registration_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("Negative_Registration")
+    }
+}
+task Required_Fields_Registration_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("Required_Fields_Registration")
     }
 }
