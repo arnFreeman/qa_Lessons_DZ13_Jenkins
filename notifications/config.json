@@ -1,0 +1,16 @@
+{
+  "base": {
+    "project": "freeman_dz13",
+    "environment": "arn_freeman",
+    "comment": "Tests for dz13",
+    "reportLink": "https://jenkins.autotests.cloud/job/dz13_test/34/",
+    "language": "ru",
+    "allureFolder": "build/allure-report/",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "6960331970:AAHcBKScZXeS7WuLxYIjtu6js50mHliUxD8",
+    "chat": "-4142914617",
+    "replyTo": ""
+  }
+}
